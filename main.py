@@ -16,7 +16,14 @@ l = login.cursor()
 c = sqlite3.connect("assortiment.db")
 cur = c.cursor()
 
+def add_tables():
+    # Create table
+    cur.execute("CREATE TABLE assortiment (id integer, name text, amount integer, price real, description text)")
+    cur.execute("CREATE TABLE history (id integer, name text, amount integer, price real, date text)")
 
+    # Save (commit) the changes
+    c.commit()
+    c.close()
 
 def add_system():
     # Create table
@@ -69,7 +76,6 @@ def check():
             print("user")
             #open_cus()
     login.commit()
-
 
 
 again()
